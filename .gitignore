@@ -7,3 +7,4 @@ src/main/webapp/resources/css
 .settings/
 .idea/
 *.iml
+*.DS_Store
