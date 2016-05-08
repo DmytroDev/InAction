@@ -4,10 +4,10 @@
     <title>InAction</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js" />
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"/>
 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css" />
-    <link href="../../../resources/css/all.css" rel="stylesheet" media="screen" th:href="@{/resources/css/all.css}" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"/>
+    <link href="../../../resources/css/all.css" rel="stylesheet" media="screen" th:href="@{/resources/css/all.css}"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header">Header</div>
@@ -24,7 +24,7 @@
                      border: 1px solid #DC3522;
                      background-image: url('/resources/images/users/bike-person2.jpg');
                      background-position: center;
-                     background-size: cover;" />
+                     background-size: cover;"/>
 
                 <p>
                     Welcome to the Spring MVC Quickstart application!
@@ -48,32 +48,44 @@
                         Statistics and info
                     </p>
 
-                    <div class="ct-chart ct-perfect-fourth"></div>
+                    <div class="ct-chart ct-perfect-fourth">
 
-                    <script>
-//                        var options = {
-//                            // Don't draw the line chart points
-//                            showPoint: true,
-//                            // Disable line smoothing
-//                            lineSmooth: Chartist.Interpolation.simple({
-//                                divisor: 2
-//                            })
-//                        }
+                        <!--<ul>-->
+                        <!--<span type="hidden" id="statistics-array" name="statistics-array" th:text="${statistics}">statistics-array</span>-->
+                        <span th:type="hidden" id="statistics-array" name="statistics-array"
+                              th:value="${statistics.statisticsList}"/>
+                        <!--<li th:each="item : ${statistics.statisticsList}" th:text="${item}">Item description here...</li>-->
+                        <!--</ul>-->
+                        <!--<p th:text="${#arrays.length(statistics)}">length</p>-->
+                        <!--                        <p th:each="stat : ${statistics}"
+                                                   th:text="${stat}">Stat</p>-->
+                    </div>
+                    <a id="href-update-statistics" href="/updatestatistics" th:href="@{/updatestatistics}">Update
+                        statistics</a>
+                    <!--                    <script>
+                    //                        var options = {
+                    //                            // Don't draw the line chart points
+                    //                            showPoint: true,
+                    //                            // Disable line smoothing
+                    //                            lineSmooth: Chartist.Interpolation.simple({
+                    //                                divisor: 2
+                    //                            })
+                    //                        }
 
-                        var data = {
-                            // A labels array that can contain any sort of values
-                            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                            // Our series array that contains series objects or in this case series data arrays
-                            series: [
-                                [5, 2, 4, 2, 0]
-                            ]
-                        };
+                                            var data = {
+                                                // A labels array that can contain any sort of values
+                                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                                                // Our series array that contains series objects or in this case series data arrays
+                                                series: [
+                                                    [5, 2, 4, 2, 0]
+                                                ]
+                                            };
 
-                        // Create a new line chart object where as first parameter we pass in a selector
-                        // that is resolving to our chart container element. The Second parameter
-                        // is the actual data object.
-                        new Chartist.Line('.ct-chart', data);
-                    </script>
+                                            // Create a new line chart object where as first parameter we pass in a selector
+                                            // that is resolving to our chart container element. The Second parameter
+                                            // is the actual data object.
+                                            new Chartist.Line('.ct-chart', data);
+                                        </script>-->
 
                 </div>
             </div>
@@ -88,7 +100,7 @@
                              th:src="@{/resources/images/user3.png}"
                              rel="stylesheet"
                              media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;" />
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
                         <a href="#">Buddies</a>
                     </div>
                 </div>
@@ -100,7 +112,7 @@
                              th:src="@{/resources/images/Chat.png}"
                              rel="stylesheet"
                              media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;" />
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
                         <a href="#" style="color: #ffad10;">Groups</a>
                     </div>
                 </div>
@@ -112,7 +124,7 @@
                              th:src="@{/resources/images/Calendar2.png}"
                              rel="stylesheet"
                              media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;" />
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
                         <a href="#" style="color: #99cc33;">Events</a>
                     </div>
                 </div>
@@ -124,7 +136,7 @@
                              th:src="@{/resources/images/award.png}"
                              rel="stylesheet"
                              media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;" />
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
                         <a href="#" style="color: #1983cd;">Challenges</a>
                     </div>
                 </div>
@@ -149,6 +161,7 @@
     </div>
 
     <div th:replace="fragments/footer :: footer">&copy; 2015 InAction Developers</div>
+    <script src="../../../resources/js/main.js"></script>
 </div>
 </body>
 </html>
