@@ -30,24 +30,13 @@ public class UsersContainer {
         return userList;
     }
 
-    public boolean contains(String userName){
-        boolean result = false;
-        for (User user : userList) {
-            if (userName.equalsIgnoreCase(user.getPassword())){
-                result = true;
-                break;
-            }
-        }
-        return result;
-    }
-
-    public boolean isCredentialsValid(String login, String password, List<User> users){
-        if ( (login == "") || (password == "") ) {
+    public boolean isCredentialsValid(String email, String password, List<User> users){
+        if ( (email == "") || (password == "") ) {
             return false;
         }
         boolean isValid = false;
         for (User user : users) {
-            if ( login.equals(user.getUsername()) ){
+            if ( email.equals(user.getEmail()) ){
                 if (DigestUtils.sha256Hex(password).equals(user.getPassword())){
                     isValid = true;
                     return isValid;
@@ -56,5 +45,7 @@ public class UsersContainer {
         }
         return isValid;
     }
+
+
 
 }
