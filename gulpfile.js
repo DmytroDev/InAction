@@ -7,8 +7,9 @@ var gulp = require("gulp"),//http://gulpjs.com/
     log = util.log;
 
 var cssTarget = "src/main/webapp/resources/css/";
+var cssTargetImages = "src/main/webapp/resources/images"
 
-gulp.task("default", ["sass"]);
+gulp.task("default", ["sass", "copyResources"]);
 
 gulp.task("sass", function () {
     log("Generating CSS files " + (new Date()).toString());
@@ -25,3 +26,11 @@ gulp.task("watch", function () {
     log("Watching scss files for modifications");
     gulp.watch(sassFiles, ["sass"]);
 });
+
+gulp.task("copyResources", function () {
+    log("copyResources (icons)");
+    gulp.src("node_modules/material-design-icons/action/1x_web/ic_youtube_searched_for_black_48dp.png")
+        .pipe(gulp.dest(cssTargetImages))
+});
+
+

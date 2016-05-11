@@ -30,13 +30,11 @@ public class HomeController {
     @Autowired
     private Statistics stat;
 
-
     // working
     @RequestMapping(value = "/homenotsign", method = RequestMethod.GET)
     @ResponseBody
     public ModelAndView index() {
         ModelAndView mav = new ModelAndView("home/homeNotSignedIn");
-        //Statistics stat = new Statistics();
         stat.generateStatistic();
         mav.addObject("statistics", stat);
         return mav;
@@ -46,7 +44,6 @@ public class HomeController {
     @RequestMapping(value = "/updatestatistics", method = RequestMethod.GET)
     @ResponseBody
     public void updatestatistics(HttpServletResponse resp) throws IOException {
-        //Statistics stat = new Statistics();
         stat.generateStatistic();
         List<Integer> statisticsList = stat.getStatisticsList();
         PrintWriter writer = resp.getWriter();
@@ -77,7 +74,6 @@ public class HomeController {
     public ModelAndView doSignIn() {
 
         ModelAndView mav = new ModelAndView("home/homeSignedIn");
-        //Statistics stat = new Statistics();
         stat.generateStatistic();
         mav.addObject("statistics", stat);
         return mav;
@@ -85,21 +81,5 @@ public class HomeController {
 
 }
 
-
-
-
-/*	@RequestMapping(value = "/homesignin", method = RequestMethod.GET)
-    @ResponseBody
-	public ModelAndView signin() {
-		ModelAndView mav = new ModelAndView("home/homeSignedIn");
-		// working code bellow
-		*//*		Foo foo = new Foo();
-        foo.setName("TestName");
-		foo.setAge(100);
-		modelAndView.addObject("foo", foo);
-		modelAndView.addObject("test1", "test line :)");*//*
-		// we may put values to pages via Map (modelAndView)
-		return mav;
-	}*/
 
 

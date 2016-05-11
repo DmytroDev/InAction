@@ -7,47 +7,47 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class SignUpController {
 
-/*    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    // working
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    @ResponseBody // отключает отработку итоговой строки как редирект на страницу. Т.е. передает просто строку.
     public ModelAndView redirectToSignUp() {
         ModelAndView mav = new ModelAndView("signup/signup");
+        mav.addObject("signupForm", new User());
         return mav;
-    }*/
+    }
 
+    // TODO: need testing and fixing code bellow
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String doSignUp(@ModelAttribute("userForm") User user, BindingResult result,
+    public String doSignUp(@ModelAttribute("signupForm") User user, BindingResult result,
                            Model model,
                            final RedirectAttributes redirectAttributes) {
-        //ModelAndView mav = null;
 
         if (result.hasErrors()) {
-            return "userForm";
+            redirectAttributes.addFlashAttribute("message", "fail");
+            return "signupForm";
         } else {
-
             /*HttpSession session = req.getSession();
             session.setAttribute("name", user.getEmail());*/
             //mav = new ModelAndView("redirect:/homesignin");
             // form input is OK
-            redirectAttributes.addFlashAttribute("css", "success");
-            redirectAttributes.addFlashAttribute("msg", "User added successfully!");
+
+            //redirectAttributes.addFlashAttribute("msg", "User added successfully!");
 
             User newUser = new User(user.getEmail(), user.getPassword());
             // TODO: save user to container
-
             // POST/REDIRECT/GET
             return "redirect:/homesignin";
         }
 
         // process registration...
         //return "Success";
-
-        //return "Success";
     }
-
-
 
 }

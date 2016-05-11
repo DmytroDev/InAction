@@ -16,7 +16,6 @@ public class UsersContainer {
     }
 
     private List<User> createUserList(){
-    //private List<User> createUserList(){
         List<User> userList = new ArrayList<User>();
         userList.add(new User("admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918")); //DigestUtils.sha256Hex("admin")
         userList.add(new User("user1", DigestUtils.sha256Hex("user1")));
