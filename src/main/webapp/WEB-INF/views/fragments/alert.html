@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="../../../resources/css/all.css" rel="stylesheet" media="screen" th:href="@{/resources/css/all.css}"/>
+</head>
+<body>
+<div class="site-alert-fragment" th:fragment="alert">
+    <!--<p class="alert-msg">Sign in error. Please try again</p>-->
+    <p class="alert-msg" th:text="#{invalid.credentials.alert}">Alert</p>
+    <!--    <nav class="site-header" th:fragment="header">
+        </nav>-->
+</div>
+
+</body>
+</html>

@@ -49,16 +49,8 @@
                     </p>
 
                     <div class="ct-chart ct-perfect-fourth">
-
-                        <!--<ul>-->
-                        <!--<span type="hidden" id="statistics-array" name="statistics-array" th:text="${statistics}">statistics-array</span>-->
                         <span th:type="hidden" id="statistics-array" name="statistics-array"
                               th:value="${statistics.statisticsList}"/>
-                        <!--<li th:each="item : ${statistics.statisticsList}" th:text="${item}">Item description here...</li>-->
-                        <!--</ul>-->
-                        <!--<p th:text="${#arrays.length(statistics)}">length</p>-->
-                        <!--                        <p th:each="stat : ${statistics}"
-                                                   th:text="${stat}">Stat</p>-->
                     </div>
                     <a id="href-update-statistics" href="/updatestatistics" th:href="@{/updatestatistics}">Update
                         statistics</a>

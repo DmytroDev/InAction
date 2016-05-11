@@ -6,6 +6,7 @@
     <link href="../../../resources/css/all.css" rel="stylesheet" media="screen" th:href="@{/resources/css/all.css}"/>
 </head>
 <body>
+<div th:replace="fragments/header :: header">&nbsp;</div>
 <div class="container">
     <div class="row">
         <div class="panel col-4 offset-4">
@@ -14,7 +15,8 @@
             <span class="error-message__message" th:text="${exceptionMessage}">>exampleMessage</span>
         </div>
     </div>
-    <div th:replace="fragments/footer :: footer">&copy; 2015 InAction Developers</div>
+
 </div>
+<div th:replace="fragments/footer :: footer">&copy; 2015 InAction Developers</div>
 </body>
 </html>

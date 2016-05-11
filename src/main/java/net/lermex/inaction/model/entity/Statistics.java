@@ -1,7 +1,12 @@
 package net.lermex.inaction.model.entity;
 
-import java.util.List;
+import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+@Component
 public class Statistics {
     private List<Integer> statisticsList;
 
@@ -11,5 +16,13 @@ public class Statistics {
 
     public void setStatisticsList(List<Integer> statisticsList) {
         this.statisticsList = statisticsList;
+    }
+
+    public void generateStatistic() {
+        Random random = new Random();
+        this.statisticsList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            this.statisticsList.add(random.nextInt(6));
+        }
     }
 }

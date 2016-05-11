@@ -3,10 +3,13 @@
 <head>
     <title th:text="#{view.index.title}">Welcome!</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
-    <link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />
+    <!--<link href="../../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>-->
+    <!--<link href="../../../resources/css/core.css" rel="stylesheet" media="screen" th:href="@{/resources/css/core.css}" />-->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css"/>
+    <link href="../../../resources/css/all.css" rel="stylesheet" media="screen" th:href="@{/resources/css/all.css}"/>
+    <!--<script src="../../../resources/js/bootstrap.min.js" th:src="@{/resources/js/bootstrap.min.js}"></script>-->
 </head>
 <body>
 <div th:replace="fragments/header :: header">&nbsp;</div>
@@ -16,10 +19,143 @@
         <!-- /* The message code is returned from the @Controller */ -->
         <div th:replace="fragments/alert :: alert (type=${#strings.toLowerCase(message.type)}, message=#{${message.message}(${#authentication.name})})">&nbsp;</div>
     </th:block>
-    <p>
-        Welcome to the Spring MVC Quickstart application!
-    </p>
+    <div class="row" style="margin: 8px;">
+        <div class="col-4" style="text-align: center;">
+            <div class="panel">
+                <h1>Peter Sportsy</h1>
+                <div rel="stylesheet"
+                     media="screen"
+                     style="width: 200px; height: 200px;
+                     margin: 0 auto;
+                     border-radius: 50%;
+                     border: 1px solid #DC3522;
+                     background-image: url('/resources/images/users/bike-person2.jpg');
+                     background-position: center;
+                     background-size: cover;"/>
+
+                <p>
+                    Welcome to the Spring MVC Quickstart application!
+                    Get started quickly by signing up.
+                </p>
+
+                <a class="site-header__link" href="#" th:href="@{/}">Home</a>
+                <a class="site-header__link" href="/archive">Archive</a>
+                <a class="site-header__link" href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
+            </div>
+            <div style="margin-top: 8px;">
+                <div class="panel">
+                    <h2>This week:</h2>
+
+                    <p>
+                        Statistics and info
+                    </p>
+
+                    <div class="ct-chart ct-perfect-fourth">
+                        <span th:type="hidden" id="statistics-array" name="statistics-array"
+                              th:value="${statistics.statisticsList}"/>
+                    </div>
+                    <a id="href-update-statistics" href="/updatestatistics" th:href="@{/updatestatistics}">Update
+                        statistics</a>
+                    <!--                    <script>
+                    //                        var options = {
+                    //                            // Don't draw the line chart points
+                    //                            showPoint: true,
+                    //                            // Disable line smoothing
+                    //                            lineSmooth: Chartist.Interpolation.simple({
+                    //                                divisor: 2
+                    //                            })
+                    //                        }
+
+                                            var data = {
+                                                // A labels array that can contain any sort of values
+                                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
+                                                // Our series array that contains series objects or in this case series data arrays
+                                                series: [
+                                                    [5, 2, 4, 2, 0]
+                                                ]
+                                            };
+
+                                            // Create a new line chart object where as first parameter we pass in a selector
+                                            // that is resolving to our chart container element. The Second parameter
+                                            // is the actual data object.
+                                            new Chartist.Line('.ct-chart', data);
+                                        </script>-->
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-8">
+            <div class="row" style="text-align: center;">
+                <div class="col-3">
+                    <div class="panel">
+
+                        <img src="../../../resources/images/user3.png"
+                             th:src="@{/resources/images/user3.png}"
+                             rel="stylesheet"
+                             media="screen"
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
+                        <a href="#">Buddies</a>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="panel">
+
+                        <img src="../../../resources/images/Chat.png"
+                             th:src="@{/resources/images/Chat.png}"
+                             rel="stylesheet"
+                             media="screen"
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
+                        <a href="#" style="color: #ffad10;">Groups</a>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="panel">
+
+                        <img src="../../../resources/images/Calendar2.png"
+                             th:src="@{/resources/images/Calendar2.png}"
+                             rel="stylesheet"
+                             media="screen"
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
+                        <a href="#" style="color: #99cc33;">Events</a>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="panel">
+
+                        <img src="../../../resources/images/award.png"
+                             th:src="@{/resources/images/award.png}"
+                             rel="stylesheet"
+                             media="screen"
+                             style="width: 18px; height: 18px; vertical-align: middle;"/>
+                        <a href="#" style="color: #1983cd;">Challenges</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel">
+                <div class="news-item">
+                    <div>
+                        <span class="news-item__name">Jane Hithard</span>
+                        <span class="news-item__date">21 Aug at 3:27 pm</span>
+                    </div>
+                    <span>Anyone up for a hike this weekend?</span>
+                </div>
+                <div class="news-item">
+                    <div>
+                        <span class="news-item__name">Simon Swiftleg</span>
+                        <span class="news-item__date">20 Aug at 9:11 am</span>
+                    </div>
+                    <span>Just finished my first 5k. Best feeling ever!</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="fragments/footer :: footer">&copy; 2015 InAction Developers</div>
+    <script src="../../../resources/js/main.js"></script>
 </div>
-<div th:replace="fragments/footer :: footer">&nbsp;</div>
 </body>
 </html>
