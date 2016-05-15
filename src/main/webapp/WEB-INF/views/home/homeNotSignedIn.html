@@ -12,20 +12,12 @@
 <body>
 <div th:replace="fragments/header :: header">Header</div>
 <div class="container">
-    <div class="row" style="margin: 8px;">
-        <div class="col-4" style="text-align: center;">
+    <div class="row" id="row-id">
+        <div class="col-4">
             <div class="panel">
                 <h1>Peter Sportsy</h1>
-                <div rel="stylesheet"
-                     media="screen"
-                     style="width: 200px; height: 200px;
-                     margin: 0 auto;
-                     border-radius: 50%;
-                     border: 1px solid #DC3522;
-                     background-image: url('/resources/images/users/bike-person2.jpg');
-                     background-position: center;
-                     background-size: cover;"/>
-
+                <div class="user-description" rel="stylesheet"
+                     media="screen"/>
                 <p>
                     Welcome to the Spring MVC Quickstart application!
                     Get started quickly by signing up.
@@ -40,60 +32,31 @@
                 <!--<a class="site-header__link" href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>-->
                 <a class="site-header__link" href="/signin" th:href="@{/signin}">Sign in</a>
             </div>
-            <div style="margin-top: 8px;">
+            <div class="statistic-div">
                 <div class="panel">
                     <h2>This week:</h2>
-
                     <p>
                         Statistics and info
                     </p>
-
                     <div class="ct-chart ct-perfect-fourth">
-
                         <span th:type="hidden" id="statistics-array" name="statistics-array"
                               th:value="${statistics.statisticsList}"/>
                     </div>
                     <a id="href-update-statistics" href="/updatestatistics" th:href="@{/updatestatistics}">Update
                         statistics</a>
-                    <!--                    <script>
-                    //                        var options = {
-                    //                            // Don't draw the line chart points
-                    //                            showPoint: true,
-                    //                            // Disable line smoothing
-                    //                            lineSmooth: Chartist.Interpolation.simple({
-                    //                                divisor: 2
-                    //                            })
-                    //                        }
-
-                                            var data = {
-                                                // A labels array that can contain any sort of values
-                                                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'],
-                                                // Our series array that contains series objects or in this case series data arrays
-                                                series: [
-                                                    [5, 2, 4, 2, 0]
-                                                ]
-                                            };
-
-                                            // Create a new line chart object where as first parameter we pass in a selector
-                                            // that is resolving to our chart container element. The Second parameter
-                                            // is the actual data object.
-                                            new Chartist.Line('.ct-chart', data);
-                                        </script>-->
-
                 </div>
             </div>
         </div>
 
         <div class="col-8">
-            <div class="row" style="text-align: center;">
+            <div class="row">
                 <div class="col-3">
                     <div class="panel">
 
-                        <img src="../../../resources/images/user3.png"
+                        <img class="buddies-img" src="../../../resources/images/user3.png"
                              th:src="@{/resources/images/user3.png}"
                              rel="stylesheet"
-                             media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;"/>
+                             media="screen"/>
                         <a href="#">Buddies</a>
                     </div>
                 </div>
@@ -101,36 +64,33 @@
                 <div class="col-3">
                     <div class="panel">
 
-                        <img src="../../../resources/images/Chat.png"
+                        <img class="chat-img" src="../../../resources/images/Chat.png"
                              th:src="@{/resources/images/Chat.png}"
                              rel="stylesheet"
-                             media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;"/>
-                        <a href="#" style="color: #ffad10;">Groups</a>
+                             media="screen"/>
+                        <a class="group-href" href="#">Groups</a>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="panel">
 
-                        <img src="../../../resources/images/Calendar2.png"
+                        <img class="events-img" src="../../../resources/images/Calendar2.png"
                              th:src="@{/resources/images/Calendar2.png}"
                              rel="stylesheet"
-                             media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;"/>
-                        <a href="#" style="color: #99cc33;">Events</a>
+                             media="screen"/>
+                        <a class="events-href" href="#">Events</a>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="panel">
 
-                        <img src="../../../resources/images/award.png"
+                        <img class="challenges-img" src="../../../resources/images/award.png"
                              th:src="@{/resources/images/award.png}"
                              rel="stylesheet"
-                             media="screen"
-                             style="width: 18px; height: 18px; vertical-align: middle;"/>
-                        <a href="#" style="color: #1983cd;">Challenges</a>
+                             media="screen"/>
+                        <a class="challenges-href" href="#">Challenges</a>
                     </div>
                 </div>
             </div>
