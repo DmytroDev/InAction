@@ -37,7 +37,7 @@
 
                 <a class="site-header__link" href="#" th:href="@{/}">Home</a>
                 <a class="site-header__link" href="/archive">Archive</a>
-                <a class="site-header__link" href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>
+                <!--<a class="site-header__link" href="/logout" th:href="@{#}" onclick="$('#form').submit();">Logout</a>-->
                 <a class="site-header__link" href="/signin" th:href="@{/signin}">Sign in</a>
             </div>
             <div style="margin-top: 8px;">
@@ -46,7 +46,6 @@
 
                     <p>
                         Statistics and info
-                        <img class="img-ic-youtube" src="../../../resources/images/ic_youtube_searched_for_black_48dp.png" alt="Test View"/>
                     </p>
 
                     <div class="ct-chart ct-perfect-fourth">
@@ -155,7 +154,7 @@
     </div>
 
     <div th:replace="fragments/footer :: footer">&copy; 2015 InAction Developers</div>
-    <script src="../../../resources/js/main.js"></script>
+    <script src="../../../resources/js/main.js?q=123"></script>
 </div>
 </body>
 </html>

@@ -5,9 +5,14 @@
 </head>
 <body>
 <div class="site-header" th:fragment="header">
-    <p class="header-msg">Today: <span class="current-data-msg" th:text="${#dates.format(#dates.createNow(),'dd MMM yyyy')}">current data</span></p>
-<!--    <nav class="site-header" th:fragment="header">
-    </nav>-->
+    <div class="header-msg">Today: <span class="current-data-msg"
+                                         th:text="${#dates.format(#dates.createNow(),'dd MMM yyyy')}">current data</span>
+    </div>
+    <div class="header-right-part">
+        Welcome, <span th:text="${session.username}"/>
+        <!--    <nav class="site-header" th:fragment="header">
+            </nav>-->
+    </div>
 </div>
 
 </body>

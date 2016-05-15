@@ -10,10 +10,27 @@ import java.util.List;
 @Component
 public class UsersContainer {
     private List<User> userList;
+    private static volatile UsersContainer instance;
 
-    public UsersContainer(){
+    private UsersContainer(){
         this.userList = createUserList();
     }
+
+    // realized singletone for multitreading
+    public static UsersContainer getUsersContainer(){
+        if (instance == null){
+            synchronized (UsersContainer.class){
+                if (instance == null){
+                    instance = new UsersContainer();
+                }
+            }
+        }
+        return instance;
+    }
+
+    /*public UsersContainer(){
+        this.userList = createUserList();
+    }*/
 
     private List<User> createUserList(){
         List<User> userList = new ArrayList<User>();
@@ -45,6 +62,8 @@ public class UsersContainer {
         return isValid;
     }
 
-
+    public void addUser(String email, String password){
+        this.userList.add(new User(email, DigestUtils.sha256Hex(password)));
+    }
 
 }

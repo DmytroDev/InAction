@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
@@ -24,19 +23,20 @@ public class HomeController {
 /*    @Autowired
     private TestBean testBean;*/
 
-    @Autowired
-    private UsersContainer container;
+/*    @Autowired
+    private UsersContainer container;*/
 
     @Autowired
     private Statistics stat;
 
     // working
-    @RequestMapping(value = "/homenotsign", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/homenotsign"}, method = RequestMethod.GET)
     @ResponseBody
-    public ModelAndView index() {
+    public ModelAndView index(HttpSession session) {
         ModelAndView mav = new ModelAndView("home/homeNotSignedIn");
         stat.generateStatistic();
         mav.addObject("statistics", stat);
+        session.setAttribute("username", "guest");
         return mav;
     }
 
@@ -54,13 +54,14 @@ public class HomeController {
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ModelAndView doLogin(@RequestParam String username,
                                 @RequestParam String password,
-                                HttpServletRequest req) {
+                                HttpSession session) {
 
-        List <User> users = container.getUserList();
+        //List <User> users = container.getUserList();
+        List <User> users = UsersContainer.getUsersContainer().getUserList();
 
-        if (container.isCredentialsValid(username, password, users)) {
-            HttpSession session = req.getSession();
-            session.setAttribute("name", username);
+        if (UsersContainer.getUsersContainer().isCredentialsValid(username, password, users)) {
+            //HttpSession session = req.getSession();
+            session.setAttribute("username", username);
             return new ModelAndView("redirect:/homesignin");
         } else {
             ModelAndView mav = new ModelAndView("signin/signin");
