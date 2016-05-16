@@ -6,10 +6,14 @@ var gulp = require("gulp"),//http://gulpjs.com/
     rename = require('gulp-rename'),//https://www.npmjs.org/package/gulp-rename
     log = util.log;
 
-var cssTarget = "src/main/webapp/resources/css/";
-var cssTargetImages = "src/main/webapp/resources/images"
+/* require = launch concrete js-plugin (f.e.: gulp-minify-css, gulp-rename, etc).
+* */
 
-gulp.task("default", ["sass", "copyResources"]);
+var cssTarget = "src/main/webapp/resources/css/";
+/*var cssTargetImages = "src/main/webapp/resources/images"*/
+
+/*gulp.task("default", ["sass", "copyResources"]);*/
+gulp.task("default", ["sass"]);
 
 gulp.task("sass", function () {
     log("Generating CSS files " + (new Date()).toString());
@@ -27,10 +31,10 @@ gulp.task("watch", function () {
     gulp.watch(sassFiles, ["sass"]);
 });
 
-gulp.task("copyResources", function () {
+/*gulp.task("copyResources", function () {
     log("copyResources (icons)");
     gulp.src("node_modules/material-design-icons/action/1x_web/ic_youtube_searched_for_black_48dp.png")
         .pipe(gulp.dest(cssTargetImages))
-});
+});*/
 
 

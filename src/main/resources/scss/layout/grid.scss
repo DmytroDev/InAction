@@ -2,6 +2,12 @@ $pad: 8px;
 
 .row {
   margin: 0 0 $pad 0;
+  /* added */
+  text-align: center;
+}
+
+#row-id {
+  margin: 8px;
 }
 
 .row:after {
@@ -45,6 +51,9 @@ $pad: 8px;
 
 .col-4 {
   width: 33.33333333%;
+  /* added
+  */
+  text-align: center;
 }
 
 .col-5 {

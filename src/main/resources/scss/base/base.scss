@@ -38,3 +38,53 @@ a {
 .ct-series-a .ct-point {
   stroke: $COLOR_ACCENT;
 }
+
+/* added for testing goals
+*/
+
+.alert-msg {
+  font-weight: bold;
+  color: #DC3522;
+  text-align: center;
+}
+
+.header-right-part {
+  float: right;
+  margin: 0 30px 0 0;
+  font-weight: bold;
+  color: #1983cd;
+  line-height: 50px;
+}
+
+.user-description {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  border-radius: 50%;
+  border: 1px solid #DC3522;
+  background-image: url('/resources/images/users/bike-person2.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.statistic-div {
+  margin-top: 8px;
+}
+
+.buddies-img, .chat-img, .events-img, .challenges-img {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+}
+
+.group-href {
+  color: #ffad10;
+}
+
+.events-href {
+  color: #99cc33;
+}
+
+.challenges-href {
+  color: #1983cd;
+}
