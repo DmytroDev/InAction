@@ -42,7 +42,6 @@ public class SignUpController {
             session.setAttribute("username", user.getEmail());
             return "redirect:/homesignin";
         }
-
     }
 
 }
