@@ -1,5 +1,3 @@
-'use strict';
-
 $(function () {
     $(document).ready(function () {
         var statistics = document.getElementById('statistics-array').getAttribute('value');
@@ -25,7 +23,5 @@ $(function () {
         });
     });
 
-    [1, 2, 3].map(function (n) {
-        return n + 1;
-    });
+    [1,2,3].map(n => n + 1);
 });

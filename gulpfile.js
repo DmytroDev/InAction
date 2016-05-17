@@ -4,15 +4,16 @@ var gulp = require("gulp"),//http://gulpjs.com/
     autoprefixer = require('gulp-autoprefixer'),//https://www.npmjs.org/package/gulp-autoprefixer
     minifycss = require('gulp-minify-css'),//https://www.npmjs.org/package/gulp-minify-css
     rename = require('gulp-rename'),//https://www.npmjs.org/package/gulp-rename
+    babel = require('gulp-babel'), // added
     log = util.log;
 
 /* require = launch concrete js-plugin (f.e.: gulp-minify-css, gulp-rename, etc).
 * */
 
-var cssTarget = "src/main/webapp/resources/css/";
-/*var cssTargetImages = "src/main/webapp/resources/images"*/
+var cssTarget = "src/main/webapp/resources/css/",
+    jsSRC = "src/main/resources/js/main.js",
+    jsDEST = "src/main/webapp/resources/js/";
 
-/*gulp.task("default", ["sass", "copyResources"]);*/
 gulp.task("default", ["sass"]);
 
 gulp.task("sass", function () {
@@ -30,6 +31,15 @@ gulp.task("watch", function () {
     log("Watching scss files for modifications");
     gulp.watch(sassFiles, ["sass"]);
 });
+
+gulp.task('transform', () => {
+    return gulp.src(jsSRC)
+        .pipe(babel({
+            presets: ['es2015']
+        }))
+        .pipe(gulp.dest(jsDEST));
+});
+
 
 /*gulp.task("copyResources", function () {
     log("copyResources (icons)");
