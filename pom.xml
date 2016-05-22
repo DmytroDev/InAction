@@ -170,6 +170,12 @@
             <artifactId>commons-codec</artifactId>
             <version>1.4</version>
         </dependency>
+        <!-- PostgreSQL driver-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>9.4.1208.jre7</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

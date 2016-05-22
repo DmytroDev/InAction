@@ -28,9 +28,6 @@ public class UsersContainer {
         return instance;
     }
 
-    /*public UsersContainer(){
-        this.userList = createUserList();
-    }*/
 
     private List<User> createUserList(){
         List<User> userList = new ArrayList<User>();

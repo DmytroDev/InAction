@@ -1,8 +1,11 @@
 package net.lermex.inaction.home;
 
+import net.lermex.inaction.helper.Impl.UserServiceImpl;
 import net.lermex.inaction.helper.UsersContainer;
 import net.lermex.inaction.model.entity.Statistics;
 import net.lermex.inaction.model.entity.User;
+import net.lermex.inaction.model.repository.UserRepository;
+import net.lermex.inaction.signup.SignUpController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,15 +26,15 @@ public class HomeController {
 /*    @Autowired
     private TestBean testBean;*/
 
-/*    @Autowired
-    private UsersContainer container;*/
+    private static org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(HomeController.class);
+
+    @Autowired
+    UserServiceImpl userService;
 
     @Autowired
     private Statistics stat;
 
-    // working
     @RequestMapping(value = {"/", "/homenotsign"}, method = RequestMethod.GET)
-    @ResponseBody
     public ModelAndView index(HttpSession session) {
         ModelAndView mav = new ModelAndView("home/homeNotSignedIn");
         stat.generateStatistic();
@@ -40,7 +43,6 @@ public class HomeController {
         return mav;
     }
 
-    // working
     @RequestMapping(value = "/updatestatistics", method = RequestMethod.GET)
     @ResponseBody
     public void updatestatistics(HttpServletResponse resp) throws IOException {
@@ -50,17 +52,15 @@ public class HomeController {
         writer.print(statisticsList.toString());
     }
 
-    // working
     @RequestMapping(value = "/authenticate", method = RequestMethod.POST)
     public ModelAndView doLogin(@RequestParam String username,
                                 @RequestParam String password,
                                 HttpSession session) {
 
-        //List <User> users = container.getUserList();
-        List <User> users = UsersContainer.getUsersContainer().getUserList();
+        List <User> users = userService.getAll();
 
         if (UsersContainer.getUsersContainer().isCredentialsValid(username, password, users)) {
-            //HttpSession session = req.getSession();
+            LOG.info("User: [" + username + "] successful signin");
             session.setAttribute("username", username);
             return new ModelAndView("redirect:/homesignin");
         } else {
@@ -70,7 +70,6 @@ public class HomeController {
         }
     }
 
-    // working
     @RequestMapping(value = "/homesignin", method = RequestMethod.GET)
     public ModelAndView doSignIn() {
 

@@ -1,14 +1,14 @@
 package net.lermex.inaction.signup;
 
-import net.lermex.inaction.helper.UsersContainer;
+import net.lermex.inaction.helper.Impl.UserServiceImpl;
 import net.lermex.inaction.model.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,9 +17,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class SignUpController {
 
-    // working
+    private static org.slf4j.Logger LOG = org.slf4j.LoggerFactory.getLogger(SignUpController.class);
+
+    @Autowired
+    UserServiceImpl userService;
+
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    @ResponseBody // отключает отработку итоговой строки как редирект на страницу. Т.е. передает просто строку.
     public ModelAndView redirectToSignUp() {
         ModelAndView mav = new ModelAndView("signup/signup");
         mav.addObject("signupForm", new User());
@@ -38,8 +41,10 @@ public class SignUpController {
             return "signup";
         } else {
             model.addAttribute("signupForm",user);
-            UsersContainer.getUsersContainer().addUser(user.getEmail(), user.getPassword());
+            userService.addUser( new User(user.getEmail(), user.getPassword()) );
+            LOG.info("New user successful signup: " + user.getEmail() );
             session.setAttribute("username", user.getEmail());
+
             return "redirect:/homesignin";
         }
     }
