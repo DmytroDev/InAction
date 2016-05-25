@@ -8,28 +8,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UsersContainer {
+public class UserContainer {
     private List<User> userList;
-    private static volatile UsersContainer instance;
+    private static volatile UserContainer instance;
 
-    private UsersContainer(){
-        this.userList = createUserList();
+    public UserContainer(){
+        //this.userList = createUserList();
     }
 
     // realized singletone for multitreading
-    public static UsersContainer getUsersContainer(){
+/*    public static UserContainer getUsersContainer(){
         if (instance == null){
-            synchronized (UsersContainer.class){
+            synchronized (UserContainer.class){
                 if (instance == null){
-                    instance = new UsersContainer();
+                    instance = new UserContainer();
                 }
             }
         }
         return instance;
-    }
+    }*/
 
 
-    private List<User> createUserList(){
+/*    private List<User> createUserList(){
         List<User> userList = new ArrayList<User>();
         userList.add(new User("admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918")); //DigestUtils.sha256Hex("admin")
         userList.add(new User("user1", DigestUtils.sha256Hex("user1")));
@@ -41,9 +41,9 @@ public class UsersContainer {
 
     public List<User> getUserList() {
         return userList;
-    }
+    }*/
 
-    public boolean isCredentialsValid(String email, String password, List<User> users){
+    public boolean areCredentialsValid(String email, String password, List<User> users){
         if ( (email == "") || (password == "") ) {
             return false;
         }
@@ -59,8 +59,8 @@ public class UsersContainer {
         return isValid;
     }
 
-    public void addUser(String email, String password){
+/*    public void addUser(String email, String password){
         this.userList.add(new User(email, DigestUtils.sha256Hex(password)));
-    }
+    }*/
 
 }

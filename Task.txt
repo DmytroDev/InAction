@@ -19,5 +19,7 @@ Day 3
 Day 4
 Добавить задачу по юнит тестированию и статическому анализу ().
 
+в основном все клево
+
 Using technology: Spring Framework, Spring MVC, Spring Data, Spring AOP, Thymeleaf,
 JS, Html, CSS, Maven, gulp, git.
