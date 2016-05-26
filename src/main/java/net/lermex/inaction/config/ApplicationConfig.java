@@ -33,14 +33,6 @@ class ApplicationConfig {
 	private static final String PROP_ENTITYMANAGER_PACKAGES_TO_SCAN = "db.entitymanager.packages.to.scan";
 	private static final String PROP_HIBERNATE_HBM2DDL_AUTO = "db.hibernate.hbm2ddl.auto";
 
-    // if it's not working - add comment into code bellow again :)
-/*	@Bean
-	public static PropertyPlaceholderConfigurer propertyPlaceholderConfigurer() {
-		PropertyPlaceholderConfigurer ppc = new PropertyPlaceholderConfigurer();
-		ppc.setLocation(new ClassPathResource("/persistence.properties"));
-		return ppc;
-	}*/
-
 	@Resource
 	private Environment env;
 
