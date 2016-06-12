@@ -3,11 +3,12 @@ package net.lermex.inaction.helper;
 import net.lermex.inaction.model.entity.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Service
 public class UserContainer {
     private List<User> userList;
     private static volatile UserContainer instance;
