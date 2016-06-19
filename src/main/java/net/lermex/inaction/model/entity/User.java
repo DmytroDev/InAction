@@ -1,6 +1,10 @@
 package net.lermex.inaction.model.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "`users`")
@@ -12,7 +16,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "users_id_seq")
     private Long id;
+    @NotEmpty @Email
     private String email;
+
+    @NotEmpty(message = "Please enter your password.")
     private String password;
 
     public User() {

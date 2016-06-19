@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 public class SignUpController {
@@ -30,15 +31,15 @@ public class SignUpController {
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String doSignUp(@ModelAttribute("signupForm") User user, BindingResult result,
+    public String doSignUp(@Valid @ModelAttribute("signupForm") User user, BindingResult result,
                            Model model,
                            final RedirectAttributes redirectAttributes,
                            HttpSession session) {
 
         if (result.hasErrors()) {
             redirectAttributes.addFlashAttribute("message", "fail");
-
-            return "signup";
+            LOG.warn("Authentication error");
+            return "redirect:/signup";
         } else {
             model.addAttribute("signupForm",user);
             userService.addUser( new User(user.getEmail(), user.getPassword()) );
